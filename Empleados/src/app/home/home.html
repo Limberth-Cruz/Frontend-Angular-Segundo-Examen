@@ -1,15 +1,15 @@
 <div class="d-flex justify-content-between align-items-center mb-3">
-  <h3>Productos</h3>
-  <button class="btn btn-primary" (click)="guardarProductosPersonalizados()">
-    Registrar Producto
+  <h3>Empleados</h3>
+  <button class="btn btn-primary" (click)="guardarEmpleadosPersonalizados()">
+    Registrar Empleado
   </button>
 </div>
 
   
-<h2>Lista de Productos</h2>
+<h2>Lista de Empleados</h2>
 <ul>
-  <li *ngFor="let p of productos">
-    {{ p.nombre }} - {{ p.precio | currency:'USD':'symbol':'1.2-2' }}
+  <li *ngFor="let p of empleados">
+    {{ p.nombre }} - {{ p.apellido }} - {{ p.correo }}- {{ p.salario }}- {{ p.created_at }}- {{ p.updated_at }}
   </li>
 </ul>
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductoService } from '../core/services/productoservice';  
+import { EmpleadoService } from '../core/services/productoservice';  
 import { CommonModule } from '@angular/common';  
 
 @Component({
@@ -9,32 +9,32 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./home.css'] 
 })
 export class Home {
-  productos: any[] = [];
+  empleados: any[] = [];
 
-  constructor(private productoService: ProductoService) {  
-    this.listarProductos();
-    //this.guardarProductosPersonalizados(); // Guarda productos automáticamente
+  constructor(private empleadoService: EmpleadoService) {  
+    this.listaEmpleados();
+
   }
 
-  listarProductos(): void {
-    this.productoService.listaProductos().subscribe({
+  listaEmpleados(): void {
+    this.empleadoService.listaEmpleados().subscribe({
       next: (data: any[]) => {               
-        this.productos = data;
-        console.log(this.productos);
+        this.empleados = data;
+        console.log(this.empleados);
       },
-      error: (err: any) => console.error('Error al cargar productos', err)  
+      error: (err: any) => console.error('Error al cargar empleados', err)  
     });
   }
 
-  guardarProductosPersonalizados(): void {
+  guardarEmpleadosPersonalizados(): void {
     const producto = { nombre: 'Raqueta de tenis', precio: 80, categoria_id: 3 };
   
-    this.productoService.registrarProducto(producto).subscribe({
+    this.empleadoService.registrarEmpleados(producto).subscribe({
       next: (productoCreado: any) => {
         console.log('Producto creado:', productoCreado);
         
         // Volver a cargar todos los productos desde el backend
-        this.listarProductos();
+        this.listaEmpleados();
       },
       error: (err: any) => console.error('Error al registrar producto', err)
     });
